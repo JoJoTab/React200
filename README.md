@@ -1,3 +1,5 @@
+## This project is learning for React. The code based on book (초보자를 위한 리액트 200제/ 이정열 저)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
