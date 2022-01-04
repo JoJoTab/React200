@@ -1,13 +1,12 @@
 import React from "react";
-import R050_ReactstrapPagination from "./R050_ReactstrapPagination";
-import 'bootstrap/dist/css/bootstrap.css';
+import R072_onSubmit from "./R072_onSubmit";
 
 function App() {
   return (
     <div>
       <h1>Start React 200!</h1>
       <p>HTML 적용</p>
-      <R050_ReactstrapPagination></R050_ReactstrapPagination>
+      <R072_onSubmit></R072_onSubmit>
     </div>
   );
 }
