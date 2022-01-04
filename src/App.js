@@ -1,14 +1,26 @@
-import React from "react";
-import R072_onSubmit from "./R072_onSubmit";
+import React, {Component} from "react";
+import { connect } from "react-redux";
+import StrAddButton from "./StrAddButton";
 
-function App() {
-  return (
-    <div>
-      <h1>Start React 200!</h1>
-      <p>HTML 적용</p>
-      <R072_onSubmit></R072_onSubmit>
-    </div>
-  );
+class App extends Component {
+  render(){
+    return (
+      <div>
+        <h1>Start React 200!</h1>
+        <span>{this.props.str}</span><br/>
+        <StrAddButton AppProp="200"/>
+      </div>
+    );
+  }
 }
+
+let mapStateToProps = (state, props) => {
+  console.log('Props from index.js : '+props.indexProps)
+  return{
+    str: state.data.str,
+  };
+};
+
+App = connect(mapStateToProps, null)(App);
 
 export default App;

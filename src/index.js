@@ -2,6 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { createStore } from 'redux';
+import { Reducer } from 'react';
+import { Provider } from 'react-redux';
+
+const store = createStore(React.Reducer);
+
+const listener = () => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App indexProp="react"/>
+    </Provider>,
+    document.getElementById('root')
+  );
+};
+
+store.subscribe(listener);
+listener();
+
+/* Non Redux
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
@@ -15,3 +38,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+*/
