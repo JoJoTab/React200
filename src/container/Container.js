@@ -18,7 +18,7 @@ function Container() {
 
     // onRemove 와 onSave 는 Action 을 dispatch 하는 함수
     const onRemove = (boardId) => dispatch(boardRemove(boardId));
-    const onSave = (boardId) => dispatch(boardSave(saveData));
+    const onSave = (saveData) => dispatch(boardSave(saveData));
 
     // reducer state 의 selectRowData filed 를 가져온 뒤 subscribe (구독)  
     const {selectRowData} = useSelector(state => state.boardReducer);
@@ -38,4 +38,61 @@ function Container() {
             })
         }
     }
+
+    const changeInput = (e) => {
+        setInputData({
+            ...inputData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const resetForm = () => {
+        setInputData({
+            boardId: '',
+            boardTitle: '',
+            boardContent: ''
+        })
+    }
+
+    // reducer stated 의 board filed 를 가져온뒤 subscribe(구독)
+    const {boards} = useSelector(state => state.boardReducer);
+
+    return(
+        <div>
+            <div>
+                <table boarder='1'>
+                    <tbody>
+                        <tr align="center">
+                            <tb width="50">번호</tb>
+                            <tb width="100">제목</tb>
+                            <tb width="200">내용</tb>
+                        </tr>
+                        {
+                            boards.map(row =>
+                            (
+                                <BoardList
+                                    key={row.boardId}
+                                    boardId={row.boardId}
+                                    boardTitle={row.boardTitle}
+                                    boardContent={row.boardContent}
+                                    onRemove={onRemove}
+                                    onRowClick={onRowClick}
+                                />
+                            ))
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <BoardNew
+                    onSave={onSave}
+                    changeInput={changeInput}
+                    inputData={inputData}
+                    resetForm={resetForm}
+                />
+            </div>
+        </div>
+    )
 }
+
+export default Container;
